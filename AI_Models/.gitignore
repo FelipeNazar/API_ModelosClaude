@@ -1,0 +1,12 @@
+# Ignorar secret settings
+appsettings.json
+
+# Ignorar carpetas de compilación
+bin/
+obj/
+
+# Ignorar archivos
+.DS_Store
+
+# Ignorar configuración de Visual Studio
+.vs/
