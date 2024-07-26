@@ -30,7 +30,39 @@ public class Program
             configuration["ClaudeAPI:Sonnet3_5Model"]
         );
 
+        var mistralAILarge = new MistralAILarge(
+            configuration["MistralAPI:ApiKey"],
+            configuration["MistralAPI:ApiEndpoint"],
+            configuration["MistralAPI:MistralLarge"]
+        );
+
+        var mixtral8x22b = new Mixtral8x22b(
+            configuration["MistralAPI:ApiKey"],
+            configuration["MistralAPI:ApiEndpoint"],
+            configuration["MistralAPI:Mixtral8x22b"]
+        );
+
         string mensaje = "Hola, ¿cómo estás?";
+
+        try
+        {
+            string respuestaMistral = await mistralAILarge.EnviarMensaje(mensaje);
+            Console.WriteLine("Respuesta de Mistral AI Mistral Large: " + respuestaMistral);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error al enviar mensaje a Mistral AI: " + ex.Message);
+        }
+
+        try
+        {
+            string respuestaMixtral = await mixtral8x22b.EnviarMensaje(mensaje);
+            Console.WriteLine("Respuesta de Mistral AI Mixtral 8x22b: " + respuestaMixtral);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error al enviar mensaje a Mixtral 8x22b: " + ex.Message);
+        }
 
         try
         {
